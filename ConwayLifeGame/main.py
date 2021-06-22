@@ -2,21 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
 
-Z = [[0, 1, 0, 0, 0],
-     [0, 0, 1, 0, 0],
-     [1, 1, 1, 0, 0],
-     [0, 0, 0, 0, 0],
-     [0, 0, 0, 0, 0]]
-
 
 def create_initial_grid(m, n):
-    """
-    Creation of initial board of Conway's Game of life
-    :param m: rows
-    :param n: cols
-    :return: grid
-    """
-
     return np.random.randint(2, size=(m, n))
 
 
@@ -52,11 +39,13 @@ def animate(data):
         Z = iterate_numpy(M)
         mat.set_data(Z)
         M = Z
+        if M == Z:
+            break
     return [mat]
 
 
 if __name__ == '__main__':
-    M = create_initial_grid(60, 60)
+    M = create_initial_grid(20, 20)
     print(M)
 
     # set up animation
